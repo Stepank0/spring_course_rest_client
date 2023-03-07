@@ -1,24 +1,18 @@
-package com.zaurtregulov.spring.rest.entity;
+package org.zaurtregulov.spring.rest.entity;
 
-import javax.persistence.*;
-
-@Entity // показывает что этот класс используется в таблице
-@Table(name = "employees") // название таблицы
 public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //определяет тип генирации PrimaryKey у каждой SQL он бывает разный
-    @Column(name = "id") // связывает колонку в таблице
+
     private int id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "surname")
     private String surname;
-    @Column(name = "department")
     private String department;
-    @Column(name = "salary")
     private int salary;
 
-    public Employee() {
+    public Employee(String name, String surname, String department, int salary) {
+        this.name = name;
+        this.surname = surname;
+        this.department = department;
+        this.salary = salary;
     }
 
     public Employee(int id, String name, String surname, String department, int salary) {
@@ -67,5 +61,16 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }
